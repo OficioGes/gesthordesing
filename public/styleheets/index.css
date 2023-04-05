@@ -159,6 +159,7 @@ align-items: center;
 .main{
     margin-top: 110px;
     width: 100%;
+    scroll-margin-top:100px;
 }
 .main_div1{
     width: 100%;
@@ -411,7 +412,9 @@ align-items: center;
   }
 
 /*******************************************Section 3****************/
-
+.section3{
+    scroll-margin-top: 150px;
+}
 .section3__div__container{
     width: 100%;
     max-width: 1080px;
@@ -507,7 +510,9 @@ align-items: center;
 
 /*******************************************Section 6****************/
 
-
+.section6{
+    scroll-margin-top: 150px;
+}
 .section6__div__container{
     width: 100%;
     max-width: 1080px;
