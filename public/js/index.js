@@ -41,14 +41,13 @@ for (let i = 0; i < cabeceraCard.length; i++) {
 
 
                             /*EFECTO SCROLL**/
-
 (function(){
     const aparecer = document.getElementById("aparecer");
     const aparecer2 = document.getElementById("imgJoven");
     const cards = document.querySelectorAll(".container__div1__ul--li")
     
-    aparecer2.classList.add("desaparecerAbajo")
-    aparecer.classList.add("desaparecerArriba")
+    aparecer.classList.add("desaparecerAbajo")
+    aparecer2.classList.add("desaparecerArriba")
     
     const observador = new IntersectionObserver((entradas, observador) => {
         entradas.forEach(entrada => {
