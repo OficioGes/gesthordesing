@@ -24,12 +24,13 @@ botonMenu.forEach(boton =>{
                             /*GESTIÓN SECCIÓN SERVICIOS**/
 /******botones sección servicios*******/
 const cardContenedor = document.querySelectorAll(".container__div1__ul--li");
+const cabeceraCard = document.querySelectorAll(".container__div1__ul__li--imgAndTitle")
 const bottonsServices = document.querySelectorAll(".bottonsServices");
 const pServices = document.querySelectorAll(".pServices");
 
 
-for (let i = 0; i < bottonsServices.length; i++) {
-    bottonsServices[i].addEventListener("click",function(){
+for (let i = 0; i < cabeceraCard.length; i++) {
+    cabeceraCard[i].addEventListener("click",function(){
 
         bottonsServices[i].classList.toggle("girar");
         pServices[i].classList.toggle("noVisible");
