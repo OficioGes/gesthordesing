@@ -57,16 +57,17 @@ for (let i = 0; i < bottonsServices.length; i++) {
           }
         });
       }, {  root:null,
-            threshold: 0.3,
+            threshold: 0.5,
             rootMargin: "0px 0px" });
     
     
     observador.observe(aparecer) //Este método es el que ejecuta el observador
-    observador.observe(aparecer2)
+    observador.observe(aparecer2,{threshold: 0.9})
     cards.forEach((card)=>{
         card.classList.add("desaparecerArriba")
-        observador.observe(card,{threshold: 1, rootMargin: "-50px 0px"})
+        observador.observe(card,{threshold: 1, rootMargin: "0px 0px"})
     });
+
 
 
     // const cargarElemento =(entradas,observador)=>{ //Esta función recibe dos parámetros, entradas y observador, siempre
