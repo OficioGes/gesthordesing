@@ -62,7 +62,7 @@ for (let i = 0; i < bottonsServices.length; i++) {
     
     
     observador.observe(aparecer) //Este método es el que ejecuta el observador
-    observador.observe(aparecer2,{threshold: 0.5})
+    observador.observe(aparecer2)
     cards.forEach((card)=>{
         card.classList.add("desaparecerArriba")
         observador.observe(card,{threshold: 1, rootMargin: "-50px 0px"})
