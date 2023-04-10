@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/styleheets/login.css">
+
+    <link rel="stylesheet" href="public/styleheets/normalize.css">
+    <link rel="stylesheet" href="public/styleheets/index.css">
+    <link rel="stylesheet" href="public/styleheets/movil.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+
+    <script src="public/js/login.js" defer></script>
+
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <header class="nav">
+        <div class="nav_div1">
+            <div class="nav_toggle icon nav-icon-5">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            <div>
+                <picture>
+                    <img src="public/img/LogoVersion4 1.png" alt="Logo">
+                </picture>
+            </div>
+            <ul class="nav_div1_div_ul ">
+                <li class="nav_div1_div_ul--li"><a href="/index.html">Inicio</a></li>
+                <li class="nav_div1_div_ul--li"><a href="#servicios">Servicios</a></li>
+                <li class="nav_div1_div_ul--li"><a href="#nosotros">Nosotros</a></li>
+                <li class="nav_div1_div_ul--li list dropdown hidden-movil sesionOn">
+                    <a href="login.html" id="user-status">Iniciar</a>       
+                    <div class="dropdown-content">
+                        <a href="#">Perfil</a>
+                        <a href="#">Solicitudes</a>
+                        <a onclick="desloguear()" href="#">Salir</a>
+                    </div>
+                </li>
+                <li class="nav_div1_div_ul--li list dropdown hidden-movil sesionOff">
+                    <a href="login.html" id="user-status">Iniciar</a>  
+                </li>
+                <li class="nav_div1_div_ul--buttom"><a href="#formContacto">Empecemos ahora</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="section1">
+        <div class="inicioSesion">
+            
+        </div>
+        <form class="formLogin" id="formLogin" method="post" action="">
+            <h1>Iniciar Sesión</h1>
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required><br>
+      
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="contraseña" required><br>
+      
+            <input id="formLoginButtom" type="submit" value="Iniciar Sesión">
+        </form>
+    </section>
+
+
+</body>
+</html>
