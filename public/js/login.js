@@ -16,7 +16,7 @@ function getCookie(name) {
 
 /****************************Validador de sesión iniciada*****************************/
 
-let url = `http://apispruebas.pythonanywhere.com/`;
+let url = `https://apispruebas.pythonanywhere.com/`;
 let userStatusElement = document.getElementById("user-status")
 let sesionOn = document.querySelector(".sesionOn")
 let sesionOff = document.querySelector(".sesionOff")
