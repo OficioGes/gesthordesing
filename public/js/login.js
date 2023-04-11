@@ -16,7 +16,7 @@ function getCookie(name) {
 
 /****************************Validador de sesión iniciada*****************************/
 
-let url = `https://apispruebas.pythonanywhere.com/`;
+let url = `http://127.0.0.1:8000/`;
 let userStatusElement = document.getElementById("user-status")
 let sesionOn = document.querySelector(".sesionOn")
 let sesionOff = document.querySelector(".sesionOff")
@@ -24,18 +24,17 @@ let form = document.getElementById('formLogin');
 
 
 (function() {
-    fetch(`${url}usuarios/`, {
+    fetch(`${url}usuarios/?sessionid=${getCookie('session_id')}`, {
         method: 'get',
         mode: 'cors',
         credentials: 'include', // incluir cookies
         headers: {
-            "X-CSRFToken": getCookie('csrftoken'),
             "X-Requested-With": "XMLHttpRequest"
         }
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        console.log(document.cookie)
         let formularioIng = document.querySelector(".formLogin") 
         userStatusElement.innerText = data.is_logged_in ? data.username : 'Iniciar';
         !data.is_logged_in ?  sesionOn.style.display = "none" : sesionOn.style.display = "flex";
@@ -48,7 +47,7 @@ let form = document.getElementById('formLogin');
         console.error('Error al obtener el estado del usuario:', error);
     });
 })();
-  
+
 
 
 
@@ -103,7 +102,7 @@ form.addEventListener('submit', function(e,callback){
 /***************************************Desloguear*****************************/
 
 function desloguear(){
-    fetch(`${url}usuarios/`,{
+    fetch(`${url}usuarios/?sessionid=${getCookie('session_id')}`,{
         method: 'delete',
         mode: 'cors',
         credentials: 'include',
