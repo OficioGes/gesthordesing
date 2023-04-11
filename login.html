@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <link rel="stylesheet" href="public/styleheets/normalize.css">
+    <link rel="stylesheet" href="public/styleheets/index.css">
+    <link rel="stylesheet" href="public/styleheets/login.css">
+    <link rel="stylesheet" href="public/styleheets/movil.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+
+    
+    <script src="public/js/login.js" defer></script>
+    <script src="public/js/index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://kit.fontawesome.com/5c61cfe63f.js" crossorigin="anonymous"></script>
+
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <section class="section1">
+        <img class="section1__logoform" src="public/img/LogoVersion4 1.png" alt="logoGesthor">
+        <h2 class="section1__h2" >Iniciar sesión en su cuenta</h2>
+        <form class="formLogin" id="formLogin" method="post" action="">
+            <div class="formLogin__inputsPrincipales">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required><br>
+            </div>
+            <div class="formLogin__inputsPrincipales">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required><br>
+            </div> 
+            <div class="formLogin__inputsSecundarios">
+                <div class="formLogin__inputsSecundarios--div">
+                    <label for="password">Recordarme:</label> 
+                    <input type="checkbox" value="Aceptar"> 
+                </div>  
+                <a href="">Olvidé mi contraseña</a>
+            </div>
+   
+            <button id="formLoginButtom" type="submit">Iniciar Sesión</button>
+            
+        </form>
+        <a href="index.html">Volver atras</a>
+    </section>
+    
+
+
+</body>
+</html>
