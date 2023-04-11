@@ -15,8 +15,7 @@ function getCookie(name) {
 }
 
 /****************************Validador de sesión iniciada*****************************/
-
-let url = `http://127.0.0.1:8000/`;
+let url = `https://apispruebas.pythonanywhere.com/`;
 let userStatusElement = document.getElementById("user-status")
 let sesionOn = document.querySelector(".sesionOn")
 let sesionOff = document.querySelector(".sesionOff")
@@ -132,4 +131,5 @@ function desloguear(){
       .catch(error => {
         console.error('Error al desloguear:', error);
       });
+
 }
