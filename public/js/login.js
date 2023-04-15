@@ -14,7 +14,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-/****************************Validador de sesión iniciada*****************************/
+
 let url = `https://apispruebas.pythonanywhere.com/`;
 //let url = `http://127.0.0.1:8000/`;
 let userStatusElement = document.getElementById("user-status")
@@ -22,30 +22,6 @@ let sesionOn = document.querySelector(".sesionOn")
 let sesionOff = document.querySelector(".sesionOff")
 let form = document.getElementById('formLogin');
 
-
-(function() {
-    fetch(`${url}usuarios/?sessionid=${getCookie('session_id')}`, {
-        method: 'get',
-        mode: 'cors',
-        credentials: 'include', // incluir cookies
-        headers: {
-            "X-Requested-With": "XMLHttpRequest"
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if(userStatusElement){
-            userStatusElement.innerText = data.is_logged_in ? data.username : 'login';
-            !data.is_logged_in ?  sesionOn.style.display = "none" : sesionOn.style.display = "flex";
-            data.is_logged_in ?  sesionOff.style.display = "none": sesionOff.style.display = "flex";
-        }
-        
-
-    })
-    .catch(error => {
-        console.error('Error al obtener el estado del usuario:', error);
-    });
-})();
 
 
 
@@ -61,7 +37,7 @@ if(form){
             "contraseña":contraseña
         }
     
-        fetch((`${url}usuarios/`), {
+        fetch((`${url}iniciar/`), {
                     method: 'post',
                     body: JSON.stringify(form),
                     mode: 'cors',
@@ -73,6 +49,7 @@ if(form){
         .then((resp) => resp.json())
         .then(function(data){
             contenido = JSON.stringify(data);
+            document.cookie = "token=" + data.token + "; path=/";
             document.cookie = `session_id=${data.session_id}; path=/`;
             Swal.fire({
                 title: "Bienvenido",
@@ -92,16 +69,59 @@ if(form){
     
 }
 
+/****************************Validador de sesión iniciada*****************************/
+(function() {
+
+    fetch(`${url}validarSesion/`, {
+        method: 'get',
+        mode: 'cors',
+        credentials: 'include', // incluir cookies
+        headers: {
+            "Authorization": "Token " + getCookie("token"),
+            "X-CSRFToken": getCookie('csrftoken'),
+            "X-Requested-With": "XMLHttpRequest"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        if(data.is_logged_in){
+            userStatusElement.innerText = data.username.username;
+            sesionOn.style.display = "flex";
+            sesionOff.style.display = "none";
+
+        }
+        else{
+            userStatusElement.innerText = "login";
+            sesionOn.style.display = "none";
+            sesionOff.style.display = "flex";
+        }
+
+        
+
+    })
+    .catch(error => {
+        if (error.status === 401) {
+            console.error('Error al obtener el estado del usuario:', error);
+    }});
+})();
+
+
+
+
+
+
 
 
 /***************************************Desloguear*****************************/
 
 function desloguear(){
-    fetch(`${url}usuarios/?sessionid=${getCookie('session_id')}`,{
+    fetch(`${url}finalizarSesion/`,{
         method: 'delete',
         mode: 'cors',
         credentials: 'include',
         headers: {
+            "Authorization": "Token " + getCookie("token"),
             "X-CSRFToken": getCookie('csrftoken'),
             "X-Requested-With": "XMLHttpRequest"
         }
